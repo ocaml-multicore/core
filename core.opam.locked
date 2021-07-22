@@ -4,6 +4,7 @@ maintainer: "opam-monorepo"
 depends: [
   "base" {= "v0.14.1"}
   "base-bigarray" {= "base"}
+  "base-bytes" {= "base"}
   "base-threads" {= "base"}
   "base-unix" {= "base"}
   "base_bigstring" {= "v0.14.0"}
@@ -14,6 +15,7 @@ depends: [
   "dune" {= "2.9.0"}
   "dune-configurator" {= "2.9.0"}
   "fieldslib" {= "v0.14.0"}
+  "findlib" {= "1.8.1+dune"}
   "jane-street-headers" {= "v0.14.0"}
   "jst-config" {= "v0.14.0"}
   "num" {= "1.3+dune"}
@@ -23,7 +25,9 @@ depends: [
   "ocaml-config" {= "2"}
   "ocaml-migrate-parsetree" {= "2.2.0"}
   "ocaml-options-vanilla" {= "1"}
+  "ocamlfind" {= "1.8.1+dune"}
   "octavius" {= "1.2.2"}
+  "ounit" {= "2.1.2"}
   "parsexp" {= "v0.14.1"}
   "ppx_assert" {= "v0.14.0"}
   "ppx_base" {= "v0.14.0"}
@@ -103,6 +107,10 @@ pin-depends: [
     "https://ocaml.janestreet.com/ocaml-core/v0.14/files/fieldslib-v0.14.0.tar.gz"
   ]
   [
+    "findlib.1.8.1+dune"
+    "https://github.com/dune-universe/lib-findlib/archive/v1.8.1+dune.tar.gz"
+  ]
+  [
     "jane-street-headers.v0.14.0"
     "https://ocaml.janestreet.com/ocaml-core/v0.14/files/jane-street-headers-v0.14.0.tar.gz"
   ]
@@ -123,8 +131,16 @@ pin-depends: [
     "https://github.com/ocaml-ppx/ocaml-migrate-parsetree/releases/download/v2.2.0/ocaml-migrate-parsetree-v2.2.0.tbz"
   ]
   [
+    "ocamlfind.1.8.1+dune"
+    "https://github.com/dune-universe/lib-findlib/archive/v1.8.1+dune.tar.gz"
+  ]
+  [
     "octavius.1.2.2"
     "https://github.com/ocaml-doc/octavius/archive/v1.2.2.tar.gz"
+  ]
+  [
+    "ounit.2.1.2"
+    "https://github.com/gildor478/ounit/releases/download/v2.1.2/ounit-v2.1.2.tbz"
   ]
   [
     "parsexp.v0.14.1"
@@ -310,10 +326,25 @@ x-opam-monorepo-duniverse-dirs: [
     ]
   ]
   [
+    "https://github.com/dune-universe/lib-findlib/archive/v1.8.1+dune.tar.gz"
+    "lib-findlib"
+    [
+      "sha256=1a337aaedca94837d4d6a1689ed18109e4a2cfd4aa99a56252a6f19fe1291bb0"
+    ]
+  ]
+  [
     "https://github.com/dune-universe/num/archive/v1.3+dune-2.tar.gz"
     "num"
     [
       "sha256=32156376be05260eb72f651ae33df41fe0af03ad322bee29a10495efadfb2d1d"
+    ]
+  ]
+  [
+    "https://github.com/gildor478/ounit/releases/download/v2.1.2/ounit-v2.1.2.tbz"
+    "ounit"
+    [
+      "sha256=39e69102dbf646f00da12cb7332df4f64c9aab732b5f664a1e6b3c0729f94e33"
+      "sha512=6b1dcc0252003407aa284446fab8469ab7c4ba6b08bf511ddb0870067c8182d48a220401722c081d81318deb069000fd2d7553abd9616156c4ccb3ff255c50f7"
     ]
   ]
   [
