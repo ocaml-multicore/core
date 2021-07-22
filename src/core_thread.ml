@@ -98,3 +98,6 @@ let getaffinity_self_exn = Error (not_supported "pthread_getaffinity_np")
 module For_testing = struct
   let create_should_raise = create_should_raise
 end
+
+let wait_read _ = ()
+let wait_write _ = ()
