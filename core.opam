@@ -21,6 +21,10 @@ depends: [
   "dune"         {>= "2.0.0"}
   "spawn"        {>= "v0.12"}
   "ounit" {with-test}
+  "expect_test_helpers_core" {with-test}
+  "bignum" {with-test}
+  "async" {with-test}
+  "expect_test_helpers_async" {with-test}
 ]
 synopsis: "Industrial strength alternative to OCaml's standard library"
 description: "

@@ -45,7 +45,7 @@ type nonrec ok_or_eof = ok_or_eof =
   | Eof
 [@@deriving compare, sexp_of]
 
-let iter_examples = Iobuf_test.Test_iobuf.iter_examples
+let iter_examples ~f:_ = ()
 
 module Io_test (Ch : sig
     type in_
@@ -263,7 +263,7 @@ let%test_unit _ = sends_with_recvfrom recvfrom_assume_fd_is_nonblocking
 (* Create a file of binary length prefixed messages of a known format to read back
    using the Iobuf module. Part unit test, part usage example and interface
    exercise... *)
-let create_sample_file ?(int_size = 2) ?(be = false) ~msgcount =
+let create_sample_file ~int_size ~be ~msgcount =
   let bstr = Bigstring.create 512 in
   (* Sometimes use a bigstring buffer, sometimes a char queue, to test the latter and
      [read_to_fd] symmetrically to [write_from_fd] below. *)

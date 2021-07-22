@@ -6,14 +6,13 @@ open! Expect_test_helpers_core
 let%expect_test "[File_descr.sexp_of_t]" =
   print_s
     [%sexp
-      (List.map [ -1; 0; 1; 2; 3 ] ~f:(fun i -> i, i |> File_descr.of_int)
+      (List.map [ -1; 0; 1; 2 ] ~f:(fun i -> i, i |> File_descr.of_int)
        : (int * File_descr.t) list)];
   [%expect {|
     ((-1 -1)
      (0  0)
      (1  1)
-     (2  2)
-     (3  _)) |}]
+     (2  2)) |}]
 ;;
 
 let%test_unit "[Error]" =
