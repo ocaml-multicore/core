@@ -20,6 +20,7 @@
 #include <netinet/in.h>
 #include <assert.h>
 #include <stdint.h>
+#include <caml/platform.h>
 
 #ifdef __APPLE__
 #include <libkern/OSByteOrder.h>
@@ -251,19 +252,21 @@ typedef off_t file_offset;
 
 #define IO_BUFFER_SIZE 65536
 
+
 struct channel {
   int fd;                       /* Unix file descriptor */
   file_offset offset;           /* Absolute position of fd in the file */
   char * end;                   /* Physical end of the buffer */
   char * curr;                  /* Current position in the buffer */
   char * max;                   /* Logical end of the buffer (for input) */
-  void * mutex;                 /* Placeholder for mutex (for systhreads) */
+  caml_plat_mutex mutex;        /* Mutex protecting buffer */
   struct channel * next, * prev;/* Double chaining of channels (flush_all) */
   int revealed;                 /* For Cash only */
   int old_revealed;             /* For Cash only */
-  int refcount;                 /* For flush_all and for Cash */
+  atomic_uintnat refcount;      /* For flush_all and for Cash */
   int flags;                    /* Bitfield */
   char buff[IO_BUFFER_SIZE];    /* The buffer itself */
+  char * name;                  /* Optional name (to report fd leaks) */
 };
 
 CAMLextern void (*caml_channel_mutex_lock) (struct channel *);
